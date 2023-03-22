@@ -1,5 +1,3 @@
-import java.time.Duration;
-
 public abstract class TestWithCounter {
     
     static long comparisonCount;
