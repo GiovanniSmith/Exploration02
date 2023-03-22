@@ -2,8 +2,12 @@ import java.util.*;
 
 public class Main {
     
-    static int[][] arrayOfArrays = {new int[100], new int[1000], new int[10000], new int[100000], new int[200000]};
+    static int[][] arrayOfArrays = new int[10][];
     public static void main (String[] args) {
+
+        for (int i = 1; i < arrayOfArrays.length + 1; i++) {
+            arrayOfArrays[i - 1] = new int[i*10000]; 
+        }
         Random rand = new Random();
 
         TestBF bf = new TestBF();
