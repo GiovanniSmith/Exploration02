@@ -5,8 +5,8 @@ public class Main {
     static int[][] arrayOfArrays = new int[10][];
     public static void main (String[] args) {
 
-        for (int i = 1; i < arrayOfArrays.length + 1; i++) {
-            arrayOfArrays[i - 1] = new int[i*10000]; 
+        for (int i = 0; i < arrayOfArrays.length; i++) {
+            arrayOfArrays[i] = new int[(i+1)*10000]; 
         }
         Random rand = new Random();
 
