@@ -38,15 +38,22 @@ public class BruteForce {
         return longest;
     }
 
-    public static void metricLogger(int[] a) {
+    public static void metricLogger(int[] a, String algorithm) {
+
         iterationCount = 0;
         Instant start = Instant.now();
-        int answer = nearlyIdentical(a);
+        int answer;
+        if (algorithm.equals("BruteForce"))
+            answer = nearlyIdentical(a);
+        else
+            answer = Hashing.nearlyIdentical(a);
+
         Instant end = Instant.now();
 
         long timeElapsed = Duration.between(start, end).toNanos();
         //System.out.print("\nArray: ");
         //printArray(a);
+        System.out.println(algorithm + ": ");
         System.out.println("Length of array: " + a.length);
         System.out.println("Length of subsequence: " + answer);
         System.out.println("Time: " + timeElapsed);
@@ -72,7 +79,8 @@ public class BruteForce {
         for (int i = 0; i < arrayOfArrays.length; i++) {
             for (int j = 0; j < arrayOfArrays[i].length; j++)
                 arrayOfArrays[i][j] = rand.nextInt(arrayOfArrays[i].length);
-                metricLogger(arrayOfArrays[i]);
+                metricLogger(arrayOfArrays[i], "BruteForce");
+                metricLogger(arrayOfArrays[i], "Hashing");
         }
     }
 }
