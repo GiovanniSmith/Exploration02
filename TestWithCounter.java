@@ -2,7 +2,7 @@ public abstract class TestWithCounter {
     
     static long comparisonCount;
 
-    abstract void runTest(int[] sequence);
+    abstract long[] runTest(int[] sequence);
 
     static long getCount() {
         return comparisonCount;

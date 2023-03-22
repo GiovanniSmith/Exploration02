@@ -5,7 +5,7 @@ public class TestBF extends TestWithCounter {
 
 
     @Override
-    public void runTest(int[] sequence) {
+    public long[] runTest(int[] sequence) {
         TestBF.resetCount();
 
         System.out.println("Algorithm: Brute Force");
@@ -17,5 +17,7 @@ public class TestBF extends TestWithCounter {
         long timeElapsed = Duration.between(start, end).toNanos();
 
         printMetrics(sequence, answer, timeElapsed);
+
+        return new long[] {timeElapsed, comparisonCount};
     }
 }

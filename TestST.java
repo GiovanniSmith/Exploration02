@@ -5,7 +5,7 @@ public class TestST extends TestWithCounter {
 
 
     @Override
-    void runTest(int[] sequence) {
+    long[] runTest(int[] sequence) {
         TestST.resetCount();
         
         System.out.println("Algorithm: Hashing");
@@ -17,5 +17,6 @@ public class TestST extends TestWithCounter {
         long timeElapsed = Duration.between(start, end).toNanos();
         
         printMetrics(sequence, answer, timeElapsed);
+        return new long[] {timeElapsed, comparisonCount};
     }
 }

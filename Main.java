@@ -1,21 +1,40 @@
 import java.util.*;
 
 public class Main {
+    
+    static int[][] arrayOfArrays = {new int[100], new int[1000], new int[10000], new int[100000], new int[200000]};
     public static void main (String[] args) {
         Random rand = new Random();
-        int[][] arrayOfArrays = {new int[100], new int[1000], new int[10000], new int[100000]};
 
         TestBF bf = new TestBF();
         TestST st = new TestST();
 
+        long[][][] testData = new long[arrayOfArrays.length][2][2];
+
         for (int i = 0; i < arrayOfArrays.length; i++) {
-            for (int j = 0; j < arrayOfArrays[i].length; j++)
+
+            for (int j = 0; j < arrayOfArrays[i].length; j++) {
                 arrayOfArrays[i][j] = rand.nextInt(arrayOfArrays[i].length);
-                bf.runTest(arrayOfArrays[i]);
-                st.runTest(arrayOfArrays[i]);
+            }
+            testData[i][0] = bf.runTest(arrayOfArrays[i]);
+            testData[i][1] = st.runTest(arrayOfArrays[i]);
         }
+
+        parseTestData(testData);
+
     }
 
+    static void parseTestData(long[][][] testData) {
+        for (int i = 0; i < testData.length; i++) {
+            System.out.println();
+            System.out.println("Sequence length:\t\t" + arrayOfArrays[i].length);
+            System.out.println("\nHashing Time:\t\t\t" + testData[i][1][0]);
+            System.out.println("BruteForce Time:\t\t" + testData[i][0][0]);
+            System.out.println("\nHashing Comparison Count:\t" + testData[i][1][1]);
+            System.out.println("BruteForce Comparison Count:\t" + testData[i][0][1]);
+            System.out.println();
+        }
+    }
     // private static void printArray(int[] a) {
     //     for (int i : a) {
     //         System.out.print(i + " ");
